@@ -14,7 +14,7 @@ Firmware PlatformIO per a una NodeMCU ESP8266 amb una matriu WS2812B de 5 × 9 L
 - Servidor web amb control de color, brillantor, efectes i enviament de text.
 - Efectes de colors, dibuixos, cara somrient i pluja Matrix.
 - Tres en ratlla per a un o dos jugadors, controlat amb tocs curts i llargs del sensor.
-- La pàgina web s'emmagatzema a `data/index.html` i se serveix des de LittleFS.
+- La pàgina web s'emmagatzema a `data/index.html`, `data/style.css` i `data/script.js`, i se serveix des de LittleFS.
 
 ## Compilar i carregar
 

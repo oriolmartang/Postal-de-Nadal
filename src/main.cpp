@@ -1029,6 +1029,16 @@ void handleCaptivePortal(){
   server.send(302, "text/plain", "");
 }
 
+void handleWebAsset(const char* path, const char* contentType){
+  File asset = LittleFS.open(path, "r");
+  if(!asset){
+    server.send(404, "text/plain", "Web asset not found in LittleFS");
+    return;
+  }
+  server.streamFile(asset, contentType);
+  asset.close();
+}
+
 // =====================================================================
 // SERVIDOR
 // =====================================================================
@@ -1042,6 +1052,14 @@ void setupServer(){
     }
     server.streamFile(page, "text/html");
     page.close();
+  });
+
+  server.on("/style.css", HTTP_GET, [](){
+    handleWebAsset("/style.css", "text/css");
+  });
+
+  server.on("/script.js", HTTP_GET, [](){
+    handleWebAsset("/script.js", "application/javascript");
   });
 
   server.on("/api/set", HTTP_GET, [](){
